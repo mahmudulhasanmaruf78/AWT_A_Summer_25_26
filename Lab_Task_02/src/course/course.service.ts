@@ -4,7 +4,7 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 
 @Injectable()
 export class CourseService {
-  private courses = [];
+  private courses: CreateCourseDto[] = [];
 
   getAllCourses() {
     return { message: 'All courses fetched successfully', data: this.courses };

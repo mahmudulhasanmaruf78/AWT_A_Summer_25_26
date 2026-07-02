@@ -2,8 +2,8 @@ import {
   IsString,
   IsNotEmpty,
   IsNumber,
-  MinLength,
-  MaxLength,
+  Min,
+  Max,
   IsOptional,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -11,23 +11,23 @@ import { Type } from 'class-transformer';
 export class CreateCourseDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string | undefined;
 
   @IsString()
   @IsNotEmpty()
-  code: string;
+  code: string | undefined;
 
   @IsString()
   @IsNotEmpty()
-  Instructor: string;
+  instructor: string | undefined;
 
   @Type(() => Number)
   @IsNumber()
-  @MinLength(1)
-  @MaxLength(6)
-  credits: number;
+  @Min(1)
+  @Max(6)
+  credits: number | undefined;
 
   @IsOptional()
   @IsString()
-  description: string;
+  description?: string;
 }
