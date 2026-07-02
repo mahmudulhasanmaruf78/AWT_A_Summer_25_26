@@ -5,19 +5,19 @@ export class CourseService {
   getAllCourses(): string {
     return 'Get All Courses - from Service';
   }
-  getCourseById(id: number): string {
+  getCourseById(id: string): string {
     return `Get Course by ID: ${id} - from Service`;
   }
-  createCourse(course: any): string {
+  createCourse(): string {
     return 'Create Course - from Service';
   }
-  updateCourse(id: number, course: any): string {
+  updateCourse(id: string): string {
     return `Update Course ${id} - from Service`;
   }
-  patchCourse(id: number, course: any): string {
+  patchCourse(id: string): string {
     return `Patch Course ${id} - from Service`;
   }
-  deleteCourse(id: number): string {
+  deleteCourse(id: string): string {
     return `Delete Course ${id} - from Service`;
   }
 }

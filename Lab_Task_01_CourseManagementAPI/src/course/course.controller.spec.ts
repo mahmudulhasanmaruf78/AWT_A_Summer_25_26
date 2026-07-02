@@ -1,18 +1,40 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CourseController } from './course.controller';
+import { CourseService } from './course.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Patch,
+  Delete,
+  Param,
+} from '@nestjs/common';
 
-describe('CourseController', () => {
-  let controller: CourseController;
+@Controller('course')
+export class CourseController {
+  constructor(private readonly courseService: CourseService) {}
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [CourseController],
-    }).compile();
-
-    controller = module.get<CourseController>(CourseController);
-  });
-
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-});
+  @Get()
+  getAllCourses(): string {
+    return this.courseService.getAllCourses();
+  }
+  @Get(':id')
+  getCourseById(@Param('id') id: string): string {
+    return this.courseService.getCourseById(id);
+  }
+  @Post()
+  createCourse(): string {
+    return this.courseService.createCourse();
+  }
+  @Put(':id')
+  updateCourse(@Param('id') id: string): string {
+    return this.courseService.updateCourse(id);
+  }
+  @Patch(':id')
+  patchCourse(@Param('id') id: string): string {
+    return this.courseService.patchCourse(id);
+  }
+  @Delete(':id')
+  deleteCourse(@Param('id') id: string): string {
+    return this.courseService.deleteCourse(id);
+  }
+}
