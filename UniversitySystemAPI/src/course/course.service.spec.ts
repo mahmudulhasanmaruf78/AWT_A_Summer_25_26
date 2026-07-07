@@ -1,18 +1,16 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CourseService } from './course.service';
+import { Injectable } from '@nestjs/common';
 
-describe('CourseService', () => {
-  let service: CourseService;
+@Injectable()
+export class CourseService {
+  getAllCourses() {
+    return { message: 'All courses fetched', data: [] };
+  }
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [CourseService],
-    }).compile();
+  getCourseById(id: string) {
+    return { message: 'Course fetched', id };
+  }
 
-    service = module.get<CourseService>(CourseService);
-  });
-
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+  createCourse(name: string, code: string) {
+    return { message: 'Course created', data: { name, code } };
+  }
+}
