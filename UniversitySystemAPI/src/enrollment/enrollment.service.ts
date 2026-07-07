@@ -10,11 +10,11 @@ export class EnrollmentService {
     private notificationService: NotificationService,
   ) {}
 
-  enrollStudentInCourse(studentName: string, courseId: string) {
+  enrollStudent(studentName: string, courseId: string) {
     const course = this.courseService.getCourseById(courseId);
     const notification = this.notificationService.sendNotification(
-      studentName,
-      `You have been enrolled in the course: ${courseId}`,
+    studentName,
+    `You have been enrolled in the course: ${courseId}`,
     );
 
     return {
