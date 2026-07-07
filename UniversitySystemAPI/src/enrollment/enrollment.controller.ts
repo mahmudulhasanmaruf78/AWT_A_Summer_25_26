@@ -3,7 +3,7 @@ import { EnrollmentService } from './enrollment.service';
 
 @Controller('enrollment')
 export class EnrollmentController {
-  constructor(private enrollmentService: EnrollmentService) { }
+  constructor(private enrollmentService: EnrollmentService) {}
   @Get()
   getEnrollments() {
     return this.enrollmentService.getEnrollments();
