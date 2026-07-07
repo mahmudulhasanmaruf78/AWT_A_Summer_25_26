@@ -1,16 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { describe, expect, it, beforeEach } from '@jest/globals';
+import { Test, TestingModule } from '@nestjs/testing';
+import { CourseService } from './course.service';
 
-@Injectable()
-export class CourseService {
-  getAllCourses() {
-    return { message: 'All courses fetched', data: [] };
-  }
+describe('CourseService', () => {
+  let service: CourseService;
 
-  getCourseById(id: string) {
-    return { message: 'Course fetched', id };
-  }
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [CourseService],
+    }).compile();
 
-  createCourse(name: string, code: string) {
-    return { message: 'Course created', data: { name, code } };
-  }
-}
+    service = module.get<CourseService>(CourseService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
